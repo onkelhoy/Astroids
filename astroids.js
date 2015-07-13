@@ -89,7 +89,7 @@ function play(){
 			}
 		});
 		
-		var specCounter = 0;
+		var specCounter = 1;
 		function shoot(){
 			if(specCounter == 0){
 				console.log("a one worthy the name!");
@@ -98,8 +98,8 @@ function play(){
 			}
 			specCounter++;
 			var intervall = 5;
-			if(specCounter > 100){
-				specCounter = 0;
+			if(specCounter > intervall){
+				specCounter = 1;
 			}
 		}
 		AddRocks();

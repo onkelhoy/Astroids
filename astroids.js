@@ -124,7 +124,7 @@ function play(){
 				ShipUpdate();
 
 				if(!canShoot){
-					shoot();
+					//shoot();
 				}
 
 				context.clearRect(0, 0, width, height);

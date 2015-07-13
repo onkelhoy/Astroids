@@ -97,7 +97,7 @@ function play(){
 				bullets.push(bullet);
 			}
 			specCounter++;
-			var intervall = ((lives > 5) ? 5 : 17);
+			var intervall = 5;
 			if(specCounter > intervall){
 				specCounter = 0;
 			}

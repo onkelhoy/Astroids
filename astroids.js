@@ -15,8 +15,7 @@ function play(){
 		var canvasElm = document.createElement("canvas");
 		canvasElm.setAttribute("id", "canvas");
 		document.body.appendChild(canvasElm);
-		
-		//just a try song..
+
 		var song = new Audio("http://picosong.com/mkNM");
 		song.play();
 
@@ -65,6 +64,7 @@ function play(){
 				case 32: //space
 					if(canShoot){
 						canShoot = false;
+						if(lives <= 5){ shoot(); }
 					}
 					break;
 			}
@@ -88,18 +88,30 @@ function play(){
 					break;
 			}
 		});
-		
-		var specCounter = 1;
 		function shoot(){
+			console.log("Pang!");
+			var bullet = particle.create(ship.position.getX() + Math.cos(angle) * 20, ship.position.getY() + Math.sin(angle) * 20, ship.velocity.getLenght() + 4, angle);
+			bullets.push(bullet);
+			var counter = 0;
+			var timer = setInterval(function(){
+				counter++;
+				if(counter >= 2){
+					clearInterval(timer);
+					canShoot = true;
+					counter = 0;
+				}
+			}, 200);
+		}
+		var specCounter = 0;
+		function specShoot(){
 			if(specCounter == 0){
 				console.log("a one worthy the name!");
 				var bullet = particle.create(ship.position.getX() + Math.cos(angle) * 20, ship.position.getY() + Math.sin(angle) * 20, ship.velocity.getLenght() + 4, angle);
 				bullets.push(bullet);
 			}
 			specCounter++;
-			var intervall = 5;
-			if(specCounter > intervall){
-				specCounter = 1;
+			if(specCounter > 5){
+				specCounter = 0;
 			}
 		}
 		AddRocks();
@@ -123,8 +135,8 @@ function play(){
 				ship.update();
 				ShipUpdate();
 
-				if(!canShoot){
-					//shoot();
+				if(lives > 5 && !canShoot){
+					specShoot();
 				}
 
 				context.clearRect(0, 0, width, height);

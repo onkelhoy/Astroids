@@ -15,7 +15,8 @@ function play(){
 		var canvasElm = document.createElement("canvas");
 		canvasElm.setAttribute("id", "canvas");
 		document.body.appendChild(canvasElm);
-
+		
+		//just a try song..
 		var song = new Audio("http://picosong.com/mkNM");
 		song.play();
 

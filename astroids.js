@@ -89,29 +89,16 @@ function play(){
 					break;
 			}
 		});
-		function shoot(){
-			console.log("Pang!");
-			var bullet = particle.create(ship.position.getX() + Math.cos(angle) * 20, ship.position.getY() + Math.sin(angle) * 20, ship.velocity.getLenght() + 4, angle);
-			bullets.push(bullet);
-			var counter = 0;
-			var timer = setInterval(function(){
-				counter++;
-				if(counter >= 2){
-					clearInterval(timer);
-					canShoot = true;
-					counter = 0;
-				}
-			}, 200);
-		}
+		
 		var specCounter = 0;
-		function specShoot(){
+		function shoot(){
 			if(specCounter == 0){
 				console.log("a one worthy the name!");
 				var bullet = particle.create(ship.position.getX() + Math.cos(angle) * 20, ship.position.getY() + Math.sin(angle) * 20, ship.velocity.getLenght() + 4, angle);
 				bullets.push(bullet);
 			}
 			specCounter++;
-			if(specCounter > 5){
+			if(specCounter > (lives > 5) ? 5 : 17){
 				specCounter = 0;
 			}
 		}

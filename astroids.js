@@ -65,7 +65,6 @@ function play(){
 				case 32: //space
 					if(canShoot){
 						canShoot = false;
-						if(lives <= 5){ shoot(); }
 					}
 					break;
 			}
@@ -123,8 +122,8 @@ function play(){
 				ship.update();
 				ShipUpdate();
 
-				if(lives > 5 && !canShoot){
-					specShoot();
+				if(!canShoot){
+					shoot();
 				}
 
 				context.clearRect(0, 0, width, height);

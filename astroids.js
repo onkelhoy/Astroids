@@ -98,7 +98,7 @@ function play(){
 			}
 			specCounter++;
 			var intervall = 5;
-			if(specCounter > intervall){
+			if(specCounter > 100){
 				specCounter = 0;
 			}
 		}
